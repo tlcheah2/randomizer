@@ -54,7 +54,6 @@ Navigation.startSingleScreenApp({
 //       imageUrl: '',
 //       backgroundColor: 'white'
 //     }
-//     // this.login('tekloon.1991@gmail.com', 'abc55013371');
 //   }
 
 //   async login(email, password) {
