@@ -14,15 +14,31 @@ const firebaseConfig = {
     messagingSenderId: "158176227891"
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-
+const database = firebaseApp.database();
+const storage = firebaseApp.storage();
 class FirebaseUtil {
-    login(email, password): Promise<any> {
-        return firebaseApp.auth().signInWithEmailAndPassword(email, password); 
+
+    createUserWithEmailAndPassword(email, password): firebase.Promise<any> {
+        return firebaseApp.auth().createUserWithEmailAndPassword(email, password);
     }
 
-    get database() {
+    login(email, password): firebase.Promise<any> {
+        return firebaseApp.auth().signInWithEmailAndPassword(email, password);
+        // firebaseApp.auth().signInWithEmailAndPassword(email, password).then(() =>{
+        //     console.log('success');
+        // }).catch(() => {
+        //     console.log('error', error.code);
+        // }); 
+    }
+
+    
+
+    get databaseRef() {
         return database;
+    }
+
+    get storageRef() {
+        return storage;
     }
 
     

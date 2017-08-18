@@ -8,19 +8,47 @@ import {
   Image
 } from 'react-native';
 import * as firebase from 'firebase';
-import { Navigation } from 'react-native-navigation';
-import { registerScreens } from './screens'
+import {StackNavigator, DrawerNavigator} from 'react-navigation'
+import HomeScreen from './src/home_screen'
+import SplashScreen from './src/splash_screen'
+import RegisterScreen from './src/register_screen'
+// import { Navigation } from 'react-native-navigation';
+// import { registerScreens } from './screens'
 
-registerScreens();
+// registerScreens();
 
-Navigation.startSingleScreenApp({
-  screen: {
-    screen: 'SplashScreen',
-    title: 'Splash',
-    navigatorStyle: {},
-    navigatorButtons: {}  
-  }
+// Navigation.startSingleScreenApp({
+//   screen: {
+//     screen: 'SplashScreen',
+//     title: 'Splash',
+//     navigatorStyle: {},
+//     navigatorButtons: {}  
+//   }
+// })
+
+const HomeDrawer = DrawerNavigator({
+  Home: {screen: HomeScreen}
 })
+
+const App = StackNavigator({
+  Splash: {screen: SplashScreen},
+  Home: {screen: HomeScreen},
+  Register: {screen: RegisterScreen}
+})
+
+export default App;
+
+// export default class App extends React.Component  {
+//   render() {
+//     return (
+//       <View>
+//         {navigator}
+//       </View>
+//     )
+//   }
+// }
+
+// export default App;
 
 // import SplashScreen from './src/splash_screen'
 // // Initialize Firebase
